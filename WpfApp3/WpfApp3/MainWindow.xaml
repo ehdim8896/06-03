@@ -1,0 +1,49 @@
+﻿<Window x:Class="WpfApp3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="Gym" Name="wnd" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="popUpColumn" Width="160"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border x:Name="popUpMenuBorder" Grid.Column="0" Background="#FF111BFF">
+            <StackPanel>
+                <Button Style="{DynamicResource RoundCorner}" Background="White" HorizontalAlignment="Right" VerticalAlignment="Top" Height="25" Width="40"  x:Name="popUpMenu" Click="popUpMenu_Click">
+                    <Image x:Name="imgMenu" Height="15" Source="images/icons8-left-100.png"/>
+                </Button>
+                <Button Margin="0,5,0,0" Style="{DynamicResource menuBtns}" Command="{Binding UpdateViewCommand}" CommandParameter="Judges">
+                    <DockPanel  Margin="0,0,70,0">
+                        <Image Source="images/judge.png" Width="30"/>
+                        <Label Foreground="White" Content="Judges"/>
+                    </DockPanel>
+                </Button>
+                <Button Style="{DynamicResource menuBtns}" Command="{Binding UpdateViewCommand}" CommandParameter="Simple">
+                    <DockPanel Margin="0,0,50,0">
+                        <Image Source="images/16-512.png" Width="30"/>
+                        <Label Foreground="White" Content="Gymnasts"/>
+                    </DockPanel>
+                </Button>
+                <Button Style="{DynamicResource menuBtns}">
+                    <DockPanel Margin="0,0,60,0">
+                        <Image Source="images/doctor.png" Width="30"/>
+                        <Label Foreground="White" Content="Doctors"/>
+                    </DockPanel>
+                </Button>
+                <Button Style="{DynamicResource menuBtns}">
+                    <DockPanel Margin="0,0,65,0">
+                        <Image Source="images/medic.png" Width="30"/>
+                        <Label Foreground="White" Content="Medics"/>
+                    </DockPanel>
+                </Button>
+            </StackPanel>
+        </Border>
+        <ContentControl Grid.Column="1" Content="{Binding SelectedViewModel}"/>
+    </Grid>
+</Window>
